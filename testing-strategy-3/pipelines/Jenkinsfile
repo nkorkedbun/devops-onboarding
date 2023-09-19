@@ -28,8 +28,8 @@ pipeline {
             steps {
                 dir("${SCRIPTS_PATH}") {
                    sh """
-                    sh report.sh test
-                    sh report.sh generate
+                    sh report.sh test local
+                    sh report.sh generate local
                     """
                 }
             }
