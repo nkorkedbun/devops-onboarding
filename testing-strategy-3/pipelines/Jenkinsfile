@@ -44,4 +44,14 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            dir("${SCRIPTS_PATH}") {
+                sh """
+                sh application-management.sh close
+                sh report.sh clean local
+                """
+            }
+        }
+    }
 }
