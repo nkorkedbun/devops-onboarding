@@ -47,11 +47,11 @@ pipeline {
     post {
         always {
             dir("${SCRIPTS_PATH}") {
+                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '../e2e-web/cypress/cucumber-json/', reportFiles: 'index.html', reportName: 'Test Report', reportTitles: '', useWrapperFileDirectly: true])
                 sh """
                 sh application-management.sh close
                 sh report.sh clean local
                 """
-                publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '../e2e-web/cypress/cucumber-json/', reportFiles: 'index.html', reportName: 'Test Report', reportTitles: '', useWrapperFileDirectly: true])
             }
         }
     }
