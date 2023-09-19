@@ -1,0 +1,19 @@
+# docker-compose.yaml
+version: '3.8'
+services:
+  jenkins:
+    # image: jenkins/jenkins:lts
+    build: .
+    privileged: true
+    user: root
+    ports:
+      - 8080:8080
+      - 50000:50000
+    volumes:
+      - ./volumn:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./:/e2e
+    environment:
+      # pass base url to test pointing at the web application
+      - CYPRESS_baseUrl=http://cypress:8123
+  # web:npm install cypress --save-devnpm install cypress --save-devdsdonfig.js:/app/cypress.config.js
