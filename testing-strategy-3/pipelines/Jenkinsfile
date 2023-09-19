@@ -18,8 +18,8 @@ pipeline {
            steps {
                 dir("${SCRIPTS_PATH}") {
                     sh """
-                    sh application-manager.sh build
-                    sh application-manager.sh start
+                    sh application-management.sh build
+                    sh application-management.sh start
                     """
                 }
             }
@@ -29,7 +29,7 @@ pipeline {
                 dir("${SCRIPTS_PATH}") {
                    sh """
                     sh audit.sh test
-                    sh application-manager.sh close
+                    sh application-management.sh close
                     """
                 }
             }
